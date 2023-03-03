@@ -7,12 +7,31 @@
     android:background="@color/black"
     tools:context=".MainActivity">
 
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_CLick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/Click"
+        android:backgroundTint="@color/red"
+        app:cornerRadius="100dp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        ></com.google.android.material.button.MaterialButton>
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingHorizontal="36dp"
         app:layout_constraintBottom_toTopOf="@+id/container"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
 
         <TextView
             android:id="@+id/tv_rezult"

@@ -1,9 +1,13 @@
 package com.example.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,16 +23,29 @@ public class MainActivity extends AppCompatActivity {
     private Integer result;
     private Double resultDouble;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textview = findViewById(R.id.tv_rezult);
+
+        findViewById(R.id.btn_CLick).setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            String textResult = String.valueOf(result);
+            intent.putExtra("key1", textResult);
+            startActivity(intent);
+        });
+
+
+
     }
 
     public void onOperationClick(View view) {
         switch (view.getId()) {
             case R.id.btn_plus:
+                View b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 x = Integer.valueOf(textview.getText().toString());
                 isOperationPlus = true;
                 isOperationMinus = false;
@@ -36,10 +53,16 @@ public class MainActivity extends AppCompatActivity {
                 isOperationX = false;
                 break;
             case R.id.btn_plusminus:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 break;
             case R.id.btn_percent:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 break;
             case R.id.btn_minus:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 x = Integer.valueOf(textview.getText().toString());
                 isOperationMinus = true;
                 isOperationPlus = false;
@@ -47,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 isOperationX = false;
                 break;
             case R.id.btn_delenie:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 x = Integer.valueOf(textview.getText().toString());
                 isOperationDelenie = true;
                 isOperationPlus = false;
@@ -55,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.btn_x:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 x = Integer.valueOf(textview.getText().toString());
                 isOperationX = true;
                 isOperationPlus = false;
@@ -68,25 +95,29 @@ public class MainActivity extends AppCompatActivity {
                 if (isOperationPlus == true) {
                     result = x + y;
                     textview.setText(result.toString());
-
+                    b = findViewById(R.id.btn_CLick);
+                    b.setVisibility(View.VISIBLE);
                 } else if (isOperationMinus == true) {
 
 
                     result = x - y;
                     textview.setText(result.toString());
-
+                    b = findViewById(R.id.btn_CLick);
+                    b.setVisibility(View.VISIBLE);
                 } else if (isOperationDelenie == true) {
                     Double x2 = Double.valueOf(x);
                     Double y2 = Double.valueOf(y);
                     resultDouble = x2 / y2;
                     textview.setText(resultDouble.toString());
-
+                    b = findViewById(R.id.btn_CLick);
+                    b.setVisibility(View.VISIBLE);
 
                 } else if (isOperationX == true) {
                     result = x * y;
                     textview.setText(result.toString());
+                    b = findViewById(R.id.btn_CLick);
+                    b.setVisibility(View.VISIBLE);
                 }
-
 
 
                 break;
@@ -98,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
     public void onNumberClick(View view) {
         switch (view.getId()) {
             case R.id.btn_nul:
+                View b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 if (textview.getText().toString().equals("0") || isOperationClick) {
                     textview.setText("0");
                 } else {
@@ -105,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_1:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 if (textview.getText().toString().equals("0") || isOperationClick) {
                     textview.setText("1");
                 } else {
@@ -112,6 +147,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_2:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 if (textview.getText().toString().equals("0") || isOperationClick) {
                     textview.setText("2");
                 } else {
@@ -119,6 +156,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_3:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 if (textview.getText().toString().equals("0") || isOperationClick) {
                     textview.setText("3");
                 } else {
@@ -126,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_4:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 if (textview.getText().toString().equals("0") || isOperationClick) {
                     textview.setText("4");
                 } else {
@@ -133,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_5:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 if (textview.getText().toString().equals("0") || isOperationClick) {
                     textview.setText("5");
                 } else {
@@ -140,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_6:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 if (textview.getText().toString().equals("0") || isOperationClick) {
                     textview.setText("6");
                 } else {
@@ -147,6 +192,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_7:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 if (textview.getText().toString().equals("0") || isOperationClick) {
                     textview.setText("7");
                 } else {
@@ -154,6 +201,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_8:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 if (textview.getText().toString().equals("0") || isOperationClick) {
                     textview.setText("8");
                 } else {
@@ -161,6 +210,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_9:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 if (textview.getText().toString().equals("0") || isOperationClick) {
                     textview.setText("9");
                 } else {
@@ -169,7 +220,15 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.btn_ac:
+                b = findViewById(R.id.btn_CLick);
+                b.setVisibility(View.GONE);
                 textview.setText("0");
+                x=0;
+                y=0;
+                isOperationX = false;
+                isOperationPlus = false;
+                isOperationMinus = false;
+                isOperationDelenie = false;
                 break;
 
         }
